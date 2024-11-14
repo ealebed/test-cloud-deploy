@@ -1,18 +1,10 @@
-# Print Hello from the current OS and architecture
-#
-# python hello_world.py
+from flask import Flask
 
+app = Flask(__name__)
 
-import platform
+@app.route("/")
+def hello():
+    return "Hello, World!"
 
-
-if __name__ == '__main__':
-    # Get the operating system name
-    os_name = platform.system()
-
-    # Get the system's architecture
-    architecture = platform.architecture()
-
-    print(f"Hello Wordl! from {os_name} operating system on {architecture[0]} {architecture[1]} architecture")
-else:
-    pass
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080)
