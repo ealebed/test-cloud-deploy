@@ -1,0 +1,11 @@
+apiVersion: deploy.cloud.google.com/v1
+kind: DeliveryPipeline
+metadata:
+  name: my-run-demo-app-1
+description: Cloud Deploy Pipeline for test
+serialPipeline:
+  stages:
+    - targetId: run-dev
+      profiles: [dev]
+    - targetId: run-prod
+      profiles: [prod]
