@@ -25,6 +25,8 @@ steps:
     gcloud config set deploy/region us-central1
     gcloud deploy apply --file pipeline.yaml
     gcloud deploy apply --file target.yaml
-    gcloud deploy releases create hello-world-latest-1 \
+    gcloud deploy releases create hello-world-latest-5 \
                         --delivery-pipeline=my-run-demo-app-1 \
                         --images=my-app-image=us-central1-docker.pkg.dev/ylebi-rnd/test-cloud-deploy/hello_world:latest
+    gcloud run services set-iam-policy --region us-central1 deploy-run-service-dev policy.yaml --quiet
+    gcloud run services set-iam-policy --region us-central1 deploy-run-service-prod policy.yaml --quiet
